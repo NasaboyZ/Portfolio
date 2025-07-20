@@ -25,110 +25,105 @@ const Homepage = () => {
       y: "100%",
       opacity: 0,
       duration: 0.4,
-   
-     scrollTrigger:{
-      trigger:'.about',
-      
-      start: "10% 25%",
-       
-      toggleActions: "play reverse play reverse",
-     }
+
+      scrollTrigger: {
+        trigger: ".about",
+
+        start: "10% 25%",
+
+        toggleActions: "play reverse play reverse",
+      },
     });
-
-
 
     gsap.from(".models-h1", {
       y: "100%",
       opacity: 0,
       duration: 0.4,
-     scrollTrigger:{
-      trigger:'.models',
-     
-      start: "top 30%",
-    
-      toggleActions: "play reverse play reverse",
-     }
+      scrollTrigger: {
+        trigger: ".models",
+
+        start: "top 30%",
+
+        toggleActions: "play reverse play reverse",
+      },
     });
 
-   
     gsap.from(".philosophy-lines", {
       y: "100%",
       opacity: 0,
       duration: 0.4,
-     scrollTrigger:{
-      trigger:'.philosophy',
-     
-      start: "10% 25%",
-    
-      toggleActions: "play reverse play reverse",
-     }
+      scrollTrigger: {
+        trigger: ".philosophy",
+
+        start: "10% 25%",
+
+        toggleActions: "play reverse play reverse",
+      },
     });
 
     gsap.to(".seats-progress .cir2", {
-      duration: 2.5, 
-      strokeDashoffset: 102.15,  
-      ease: "power2.inOut",  
+      duration: 2.5,
+      strokeDashoffset: 102.15,
+      ease: "power2.inOut",
       scrollTrigger: {
-        trigger: ".seats-progress",  
-       
-        start: "top 60%",  
-       
-        toggleActions: "play none none reverse",  
-     
-      }
+        trigger: ".seats-progress",
+
+        start: "top 60%",
+
+        toggleActions: "play none none reverse",
+      },
     });
-    gsap.fromTo(".dot-cir svg", 
-      { rotate: 0 }, 
+    gsap.fromTo(
+      ".dot-cir svg",
+      { rotate: 0 },
       {
         duration: 2.5,
-        rotate: 240,  
-        ease: "power2.inOut",  
-        transformOrigin: "center",  
+        rotate: 240,
+        ease: "power2.inOut",
+        transformOrigin: "center",
         scrollTrigger: {
-          trigger: ".seats-progress",  
-  
-          start: "top 60%",  
-          toggleActions: "play none none reverse",  
-        }
+          trigger: ".seats-progress",
+
+          start: "top 60%",
+          toggleActions: "play none none reverse",
+        },
       }
     );
-    gsap.from(".left-seats h1,.left-seats h4", 
-     
+    gsap.from(
+      ".left-seats h1,.left-seats h4",
+
       {
-        opacity:0,
+        opacity: 0,
         duration: 2.5,
-       
-        ease: "power2.inOut",  
-         
+
+        ease: "power2.inOut",
+
         scrollTrigger: {
-          trigger: ".seats-progress",  
-          start: "top 60%",  
-          toggleActions: "play none none reverse",  
-        }
+          trigger: ".seats-progress",
+          start: "top 60%",
+          toggleActions: "play none none reverse",
+        },
       }
     );
-    
 
     gsap.from(".strategy-lines", {
       y: "100%",
       opacity: 0,
       duration: 0.4,
-     scrollTrigger:{
-      trigger:'.strategy',
-     
-      start: "10% 25%",
-    
-      toggleActions: "play reverse play reverse",
-     }
-    });
+      scrollTrigger: {
+        trigger: ".strategy",
 
+        start: "10% 25%",
+
+        toggleActions: "play reverse play reverse",
+      },
+    });
   }, []);
 
   ///cursor animation
   useEffect(() => {
     const parent = parentRef.current;
     const handleCrsr = (e) => {
-      
       const parentRect = parent.getBoundingClientRect();
       const cursorSize = 64;
 
@@ -152,11 +147,11 @@ const Homepage = () => {
       });
     };
 
-    parent.addEventListener("mouseenter", ()=>{
-      parent.addEventListener("mousemove", handleCrsr)
+    parent.addEventListener("mouseenter", () => {
+      parent.addEventListener("mousemove", handleCrsr);
     });
     return () => {
-      parent.removeEventListener("mouseleave", ()=>{
+      parent.removeEventListener("mouseleave", () => {
         gsap.to("#crsr", {
           x: 0,
           y: 0,
@@ -166,9 +161,6 @@ const Homepage = () => {
       });
     };
   });
-
-
-
 
   return (
     <div className="home">
@@ -195,7 +187,7 @@ const Homepage = () => {
           </div>
 
           <h1 className="  overflow-hidden    h-[29vw] lg:h-[26vw] ">
-            {"rejouice".split("").map((letter, idx) => (
+            {"Josef".split("").map((letter, idx) => (
               <span
                 className="hero-span inline-block text-[25vw] lg:text-[27vw] font-medium font-Rejoice text-white leading-[27vw]"
                 key={idx}
@@ -210,18 +202,15 @@ const Homepage = () => {
       <div className="about w-full lg:h-screen px-3 lg:px-9 pt-4 my-10 ">
         <div className="justifyBetween border-b-[1px] my-6 border-black overflow-hidden py-2 lg:py-5">
           <h4 className=" lines text-sm lg:text-2xl flexCenter text-[#0e0e0e]">
-            Tomorrow's Brands, Today.
-            <sup className="text-xs lg:text-sm font-extralight align-top">
-              Tm
-            </sup>
+            Josef Leite
           </h4>
           <h4 className="lines text-sm lg:text-2xl font-thin text-[#0e0e0e]">
-            Paris/San Deigo
+            Über mich
           </h4>
         </div>
 
         <div className=" py-4  flex flex-wrap">
-          {`We are a venture firm and digital agency.Our mission is to transform founders' visions into remarkable brands. Choose  traditional compensation or an equity offset through our Venture Model — your vision, your decision.`
+          {`Als Web Design Developer studiere ich am SAE Institute Zürich für meinen Bachelor. Mit meiner Leidenschaft für Design und Entwicklung gestalte ich meine Welt.`
             .split(" ")
             .map((word, idx) => (
               <p key={idx} className="para1  mb-1 mr-3  overflow-hidden">

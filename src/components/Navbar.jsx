@@ -7,13 +7,14 @@ import { FaCirclePlay } from "react-icons/fa6";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import Reel from "./Reel";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import path from "path";
 const Navbar = () => {
   const navBoxRef = useRef();
   const navRef = useRef();
   const h2Ref = useRef();
- 
+
   const [showNav, setShowNav] = useState(false);
-  const [reelPlay, setReelPlay] = useState(false)
+  const [reelPlay, setReelPlay] = useState(false);
 
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
@@ -43,49 +44,55 @@ const Navbar = () => {
     //    delay:5
     //  })
 
-     gsap.to('.nav-h1',{
-      color:"#000",
-      scrollTrigger:{
-        start:'100% top',
-       
-        toggleActions: "play none none reverse",  
-      }
-     })
-     gsap.to('.nav-h1-left',{
-    opacity:0,
-      scrollTrigger:{
-        start:'100% top',
-       
-        toggleActions: "play none none reverse",  
-      }
-     })
-     gsap.to('.nav-logo',{
-     opacity:1,
-      scrollTrigger:{
-        start:'100% top',
-        
-        toggleActions: "play none none reverse",  
-      }
-     })
-  }, [])
-  
+    gsap.to(".nav-h1", {
+      color: "#000",
+      scrollTrigger: {
+        start: "100% top",
+
+        toggleActions: "play none none reverse",
+      },
+    });
+    gsap.to(".nav-h1-left", {
+      opacity: 0,
+      scrollTrigger: {
+        start: "100% top",
+
+        toggleActions: "play none none reverse",
+      },
+    });
+    gsap.to(".nav-logo", {
+      opacity: 1,
+      scrollTrigger: {
+        start: "100% top",
+
+        toggleActions: "play none none reverse",
+      },
+    });
+  }, []);
 
   const navoption = [
-    { id: 1, pageName: "Home", },
-    { id: 2, pageName: "Works",  },
-    { id: 3, pageName: "Services & Models",  },
-    { id: 4, pageName: "About",   },
-    { id: 5, pageName: "Contact", },
+    { id: 1, pageName: "Home", path: "/" },
+    { id: 2, pageName: "Works", path: "/works" },
+    { id: 3, pageName: "Services & Models", path: "/services" },
+    { id: 4, pageName: "About", path: "/about" },
+    { id: 5, pageName: "Contact", path: "/contact" },
   ];
   return (
     <>
-     <Reel playReel={reelPlay} setReelPlay={setReelPlay}/>
-      <div ref={navRef} className="w-full h-28  fixed top-0 left-0 z-[999] justifyBetween  px-9 py-1 overflow-x-hidden ">
-        <a  className="relative flex items-center">
+      <Reel playReel={reelPlay} setReelPlay={setReelPlay} />
+      <div
+        ref={navRef}
+        className="w-full h-28  fixed top-0 left-0 z-[999] justifyBetween  px-9 py-1 overflow-x-hidden "
+      >
+        <a className="relative flex items-center">
           <h1 className="nav-h1-left text-lg font-medium tracking-wide text-white">
-            The Venture Agency.
+            Josef Leite
           </h1>
-          <img src="public/rejouice.svg" alt="" className="absolute  nav-logo opacity-0" />
+          <img
+            src="public/rejouice.svg"
+            alt=""
+            className="absolute  nav-logo opacity-0"
+          />
         </a>
         <h1
           onClick={() => setShowNav(true)}
@@ -114,14 +121,18 @@ const Navbar = () => {
             <div className="flex flex-col w-7/12 ">
               <video
                 autoPlay
-                muted loop
+                muted
+                loop
                 src="https://prismic-io.s3.amazonaws.com/rejouice/3c8eec5e-c857-4fd3-9add-a9e6035a160c_RJ-2.0-Video+background+5_1+%281%29.mp4"
                 className="w-full h-full object-cover object-center"
               ></video>
               <div className="justifyBetween mt-1">
                 <div className="flexCenter">
                   <FaCirclePlay className="text-black" />
-                  <h4 onClick={()=>setReelPlay(true)} className="underline-hover-effect  text-black  cursor-pointer ml-1 font-medium">
+                  <h4
+                    onClick={() => setReelPlay(true)}
+                    className="underline-hover-effect  text-black  cursor-pointer ml-1 font-medium"
+                  >
                     Play reel
                   </h4>
                 </div>
@@ -131,7 +142,7 @@ const Navbar = () => {
           </div>
           <div className=" flex-1 flex flex-col gap-1 ">
             {navoption.map((option, idx) => (
-              <a  key={option.id}>
+              <a key={option.id}>
                 <motion.h2
                   key={option.id}
                   whileHover="hover"
@@ -196,9 +207,9 @@ const Navbar = () => {
             <motion.div whileHover="hover" className="flexCenter  ">
               X
               <motion.span
-                  variants={{ hover: { rotate: 0 } }}
-                  initial={{ rotate: -45 }}
-                  transition={{ duration: 0.3 }}
+                variants={{ hover: { rotate: 0 } }}
+                initial={{ rotate: -45 }}
+                transition={{ duration: 0.3 }}
               >
                 <IoIosArrowRoundForward className=" text-2xl" />
               </motion.span>
@@ -206,9 +217,9 @@ const Navbar = () => {
             <motion.div whileHover="hover" className="flexCenter  ">
               Instagram{" "}
               <motion.span
-                   variants={{ hover: { rotate: 0 } }}
-                   initial={{ rotate: -45 }}
-                   transition={{ duration: 0.3 }}
+                variants={{ hover: { rotate: 0 } }}
+                initial={{ rotate: -45 }}
+                transition={{ duration: 0.3 }}
               >
                 <IoIosArrowRoundForward className="text-2xl" />
               </motion.span>
@@ -216,9 +227,9 @@ const Navbar = () => {
             <motion.div whileHover="hover" className="flexCenter  ">
               Linkedin{" "}
               <motion.span
-               variants={{ hover: { rotate: 0 } }}
-               initial={{ rotate: -45 }}
-               transition={{ duration: 0.3 }}
+                variants={{ hover: { rotate: 0 } }}
+                initial={{ rotate: -45 }}
+                transition={{ duration: 0.3 }}
               >
                 <IoIosArrowRoundForward className="text-2xl" />
               </motion.span>
